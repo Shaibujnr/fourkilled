@@ -42,24 +42,29 @@ sells=[0,0,0,0]
 
 def CollectInput():
     '''collect the input of the user'''
-    for number in range(len(cells)):
-        x=None
-        while x==None:
-            y=raw_input('Enter Number:')
-            if y != 'QUIT':
-                try:
-                    cells[number]=int(y)
-                    break
-                except ValueError:
-                    print ''
-                    print 'INVALID INPUT!!!'
-                    print 'Please Check value again'
-                    print 'value cannot be decimal or letter'
-                    print 'neither can it be left empty'
-                    print ''
-            else:
-                sys.exit()
-                
+    while True:
+        y=raw_input('Enter A guess of four numbers:').strip()
+        if y != 'QUIT':
+            try:
+                int(y)
+                if len(y)<4 or len(y)>4:
+                    raise IndexError
+                for i in range(len(str(y))):
+                    cells[i]= int(y[i])
+                break
+            except ValueError:
+                print ''
+                print 'INVALID INPUT!!!'
+                print 'Please Check value again'
+                print 'there should be no spaces between values'
+                print 'value cannot be decimal or letter'
+                print 'neither can it be left empty'
+                print ''
+            except IndexError:
+                print ''
+                print 'number of input Values must be 4 (not more not less)'
+        else:
+            sys.exit()
                 
     return cells
 
@@ -153,16 +158,17 @@ def app():
         if is_valid(Players_Guess):
             print ''
             print result(Players_Guess,Unique_Values)
-            #print Unique_Values (to see if the results are correct)
+            #print Unique_Values #(to see if the results are correct)
             print ''
             Players_Guess=CollectInput()
         else:
             print ''
             print 'Invalid Input!!'
-            print 'value must not be greater than 9 or less than 1'
-            print 'also you cannot repeat same value'
+            print '0 should not be included in guess'
+            print 'you cannot repeat numbers in a guess'
             print ''
             Players_Guess=CollectInput()
+    print result(Players_Guess,Unique_Values)
 
            
             
