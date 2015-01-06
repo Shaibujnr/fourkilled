@@ -1,47 +1,51 @@
-'''       
-        4killed is a Brain Training Game that deals with a set of 4 numbers ranging
-from one to nine. These 4 numbers are unique i.e no number is repeated in these
-four numbers. The  aim of this game is for the player to guess these four
-numbers exactly as they are in value and position(1st,2nd,3rd and 4th) from the
-left. Each number in the players guess is taken and compared with these four
-unique numbers and then a result is returned; The player keeps guessing
-until he gets these numbers exactly as they are in value and in position. The
-results are returned in terms of killed(k),injured(i) and none(n).
-        A number in the player's guess is said to be killed if that number is equivalent
-to that in the unique numbers in value and in position; Also a number is said to be 
-injured if in the unique numbers, there is such a value but not in the same position
-as guessed by the player; And a number is said to be none if there is no such value
-in the unique numbers. for example
+"""       
+4killed is a Brain Training Game that deals with a set of 4 numbers ranging from 
+one to nine. These 4 numbers are unique i.e no number is repeated in these four 
+numbers. The aim of the game is for the player to guess these four numbers 
+exactly as they are in value and position (1st, 2nd, 3rd and 4th) from the left. 
+Each number in the players guess is taken and compared with these four unique 
+numbers and then a result is returned. The player keeps guessing until he gets 
+these numbers exactly as they are in value and in position. The results are 
+returned in terms of killed(k),injured(i) and none(n).
+
+A number in the player's guess is said to be killed if that number is equivalent
+to that in the unique numbers in value and in position; Also a number is said to 
+be injured if in the unique numbers, there is such a value but not in the same 
+position as guessed by the player; And a number is said to be none if there is 
+no such value in the unique numbers. for example
+        
         unique_number= 6758
         players_guess= 5762
         result would be 1k2i1n
-        The game is over once the player guesses the unique numbers
-correctly of course in value and in position
-        In other words the aim of this game is for the player to hit a 4killed!!
+        
+The game is over once the player guesses the unique numbers correctly of course 
+in value and in position. In other words the aim of this game is for the player 
+to hit a 4killed!!
+
 NOTE::::::
-only the results will be returned there shall be no hint of to which of the numbers
-is killed, injured or none.
+Only the results will be returned there shall be no hint as to which of the 
+numbers is killed, injured or none.
+
 To quit game while running enter quit in capital letters
+
 ENJOY!!!
 ENJOY!!!
 ENJOY!!!
 ENJOY!!!
+"""
+
+import sys
+import random
 
 
-'''
 
-
-
-
-
-import sys,random
 cells=[0,0,0,0]
 sells=[0,0,0,0]
 
 
 
 def CollectInput():
-    '''collect the input of the user'''
+    """collect the input of the user"""
     while True:
         y=raw_input('Enter A guess of four numbers:').strip()
         if y != 'QUIT':
@@ -109,8 +113,7 @@ def Nonne(guess,values):
 
             
 def is_unique(cells):
-    ''' to make sure the numbers are unique
-    i.e none of the numbers are repeated'''
+    """Ensures the numbers are unique i.e none of the numbers are repeated"""
     for column in range(len(cells)):
         for number in range(len(cells)):
             if number!= column and cells[number]==cells[column]:
@@ -120,7 +123,7 @@ def is_unique(cells):
 
 
 def is_valid(cells):
-    '''ensuring that the numbers are valid'''
+    """Ensures the numbers are valid"""
     for number in range(len(cells)):
         if cells[number] <1 or cells[number] >9 or not is_unique(cells):
             return False
@@ -189,9 +192,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-
-                
-        
-        
     
