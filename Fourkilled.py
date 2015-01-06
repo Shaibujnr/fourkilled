@@ -47,7 +47,7 @@ sells=[0,0,0,0]
 def CollectInput():
     """collect the input of the user"""
     while True:
-        y=raw_input('Enter A guess of four numbers:').strip()
+        y = raw_input("Guess Number (4 digits): ").strip()
         if y != 'QUIT':
             try:
                 int(y)
@@ -56,20 +56,10 @@ def CollectInput():
                 for i in range(len(str(y))):
                     cells[i]= int(y[i])
                 break
-            except ValueError:
-                print ''
-                print 'INVALID INPUT!!!'
-                print 'Please Check value again'
-                print 'there should be no spaces between values'
-                print 'value cannot be decimal or letter'
-                print 'neither can it be left empty'
-                print ''
-            except IndexError:
-                print ''
-                print 'number of input Values must be 4 (not more not less)'
+            except:
+                print(">>> Error: Four digit integer number entry expected.\n")
         else:
             sys.exit()
-                
     return cells
 
 
@@ -156,37 +146,35 @@ def app():
     Unique_Values=fill(sells)
     while not is_valid(Unique_Values):
         Unique_Values= fill(sells)
+        
     Players_Guess=CollectInput()
     while Players_Guess != Unique_Values:
         if is_valid(Players_Guess):
-            print ''
-            print result(Players_Guess,Unique_Values)
+            print(">>> %s" % result(Players_Guess,Unique_Values))
             #print Unique_Values #(to see if the results are correct)
             print ''
             Players_Guess=CollectInput()
         else:
-            print ''
-            print 'Invalid Input!!'
-            print '0 should not be included in guess'
-            print 'you cannot repeat numbers in a guess'
-            print ''
+            print(">>> Error: An integer number of 4 unique digits not "
+                  "containing zero expected.\n")
             Players_Guess=CollectInput()
-    print result(Players_Guess,Unique_Values)
+    print(">>> *! Hurray \o/ !* %s\n" % result(Players_Guess,Unique_Values))
 
            
             
             
 def main():
     print __doc__
+    
+    confirm_msg = "Press any key to continue or Q to quit..."
     x= 'Y'
     while x !='N':
         app()
-        print''
-        x=raw_input('any key to play again and N to quit:')
+        x=raw_input(confirm_msg)
         try:
             x=x.upper()
         except AttributeError:
-            x=raw_input('any to play again and N to quit:')
+            x=raw_input(confirm_msg)
 
     sys.exit()
 
