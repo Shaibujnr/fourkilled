@@ -22,19 +22,17 @@ The game is over once the player guesses the unique numbers correctly of course
 in value and in position. In other words the aim of this game is for the player 
 to hit a 4killed!!
 
-NOTE::::::
+NOTE ::::::
 Only the results will be returned there shall be no hint as to which of the 
 numbers is killed, injured or none.
 
-To quit game while running enter quit in capital letters
+ENJOY!!!
 
-ENJOY!!!
-ENJOY!!!
-ENJOY!!!
-ENJOY!!!
+:: To quit enter Q
 """
 
 import sys
+import msvcrt
 import random
 
 
@@ -48,7 +46,7 @@ def collect_input():
     """collect the input of the user"""
     while True:
         y = raw_input("Guess Number (4 digits): ").strip()
-        if y != 'QUIT':
+        if y != 'Q':
             try:
                 int(y)
                 if len(y)<4 or len(y)>4:
@@ -161,13 +159,16 @@ def main():
     
     confirm_msg = "Press any key to continue or Q to quit..."
     x= 'Y'
-    while x != 'N':
+    while x != 'Q':
+        print('')
         app()
-        x = raw_input(confirm_msg)
+        print(confirm_msg)
+        x = msvcrt.getch()
         try:
             x = x.upper()
         except AttributeError:
-            x = raw_input(confirm_msg)
+            print(confirm_msg)
+            x = msvcrt.getch()
 
     sys.exit()
 
