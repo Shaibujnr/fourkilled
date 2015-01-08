@@ -148,21 +148,12 @@ def app():
             print ''
             Players_Guess = collect_input()
         else:
-<<<<<<< HEAD
-            print ''
-            print 'Invalid Input!!'
-            print '0 should not be included in guess'
-            print 'you cannot repeat numbers in a guess'
-            print ''
-            Players_Guess=CollectInput()
-    print result(Players_Guess,Unique_Values)+'illed!!!!!'
-=======
             print(">>> Error: An integer number of 4 unique digits not "
                   "containing zero expected.\n")
             Players_Guess = collect_input()
     print(">>> *! Hurray \o/ !* %s\n" % result(Players_Guess,Unique_Values))
 
->>>>>>> 33bcb5d96b4d77791bf8bded98ea0645ca3eb057
+
 
 def main():
     print __doc__
